@@ -42,3 +42,20 @@ function zap(produto) {
     const mensagem = encodeURIComponent(`Olá Fyna Essência! Gostaria de saber mais sobre o ${produto}.`);
     window.open(`https://wa.me/${numero}?text=${mensagem}`, '_blank');
 }
+
+// Função de Compartilhar
+function compartilhar() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Fyna Essência | Catálogo',
+            text: 'Confira as fragrâncias exclusivas da Fyna Essência!',
+            url: window.location.href
+        })
+        .then(() => console.log('Compartilhado com sucesso'))
+        .catch((error) => console.log('Erro ao compartilhar', error));
+    } else {
+        // Fallback caso o navegador não suporte Web Share (ex: computadores)
+        alert('Copiado para a área de transferência!');
+        navigator.clipboard.writeText(window.location.href);
+    }
+}
