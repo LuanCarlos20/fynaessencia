@@ -2,7 +2,6 @@
     --gold: #C5A059;
     --black: #111111;
     --white: #ffffff;
-    /* Cores do novo fundo */
     --grad-start: #131224;
     --grad-end: #201320;
 }
@@ -12,28 +11,33 @@ html { scroll-behavior: smooth; }
 
 body { 
     font-family: 'Poppins', sans-serif; 
-    /* Aplicando o gradiente solicitado */
     background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
     background-attachment: fixed;
     color: var(--white); 
     padding-bottom: 90px; 
 }
 
+/* Cabeçalho e Rodapé com a mesma cor */
+header, .bottom-menu { 
+    background: linear-gradient(135deg, var(--grad-start), var(--grad-end)) !important;
+    border-color: rgba(197, 160, 89, 0.3) !important;
+}
+
 header { 
-    background: #fff; 
     padding: 15px 20px; 
     display: flex; 
     justify-content: space-between; 
     align-items: center;
-    border-bottom: 1px solid #eee; 
+    border-bottom: 1px solid; 
 }
 
 .brand-header { display: flex; align-items: center; gap: 12px; }
 .main-logo { height: 60px; width: 60px; border-radius: 50%; object-fit: contain; }
-.logo-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: bold; letter-spacing: 1px; color: var(--black); }
+.logo-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: bold; letter-spacing: 1px; color: var(--white); }
 .logo-text span { color: var(--gold); }
 
-.share-btn { background: none; border: none; color: var(--black); font-size: 1.4rem; cursor: pointer; padding: 8px; }
+/* Botão de Compartilhar Gold */
+.share-btn { background: none; border: none; color: var(--gold); font-size: 1.4rem; cursor: pointer; padding: 8px; }
 
 /* Slider */
 .slider-box { width: 100%; height: 220px; overflow: hidden; position: relative; background: #000; }
@@ -49,7 +53,7 @@ header {
 .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0 15px; }
 
 .card { 
-    background: rgba(255, 255, 255, 0.05); /* Fundo levemente translúcido para os cards */
+    background: rgba(255, 255, 255, 0.05); 
     border-radius: 15px; 
     overflow: hidden; 
     display: flex; 
@@ -72,8 +76,8 @@ header {
 .modal-zoom img { max-width: 90%; max-height: 80%; border-radius: 10px; }
 .fechar-zoom { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; }
 
-/* Menu Inferior */
-.bottom-menu { position: fixed; bottom: 0; width: 100%; background: #fff; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid #eee; z-index: 1000; }
-.menu-item { text-decoration: none; color: #000; display: flex; flex-direction: column; align-items: center; width: 33%; }
+/* Menu Inferior Gold */
+.bottom-menu { position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid; z-index: 1000; }
+.menu-item { text-decoration: none; color: var(--gold); display: flex; flex-direction: column; align-items: center; width: 33%; }
 .menu-item i { font-size: 1.3rem; margin-bottom: 4px; }
-.menu-item small { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; }
+.menu-item small { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; color: var(--white); }
