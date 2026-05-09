@@ -1,142 +1,162 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fyna Essência | Catálogo</title>
-
-    <!-- Fontes -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <!-- Ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-
-    <link rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!-- HEADER -->
     <header id="inicio">
         <div class="brand-header">
-            <img src="./Fyna2.PNG" alt="Logo" class="main-logo">
-
-            <div class="logo-text">
-                FYNA <span>ESSÊNCIA</span>
-            </div>
+            <img src="./Fyna2.PNG" alt="Logo Fyna Essência" class="main-logo">
+            <div class="logo-text">FYNA <span>ESSÊNCIA</span></div>
         </div>
-
-        <button class="share-btn" onclick="compartilhar()">
+        <button class="share-btn" onclick="compartilhar()" title="Compartilhar Catálogo">
             <i class="fa-solid fa-share-nodes"></i>
         </button>
     </header>
 
-    <!-- BANNER -->
-    <section class="hero">
-        <div class="overlay"></div>
-
-        <div class="hero-content">
-            <h1>Perfumes Exclusivos</h1>
-            <p>Elegância, sofisticação e fragrâncias marcantes.</p>
+    <section class="slider-box">
+        <div class="slider-wrapper" id="slider">
+            <div class="slide"><img src="./preto.png" alt="Banner 1"></div>
+            <div class="slide"><img src="./slibranco.png" alt="Banner 2"></div>
+            <div class="slide"><img src="./gold.png" alt="Banner 3"></div>
+        </div>
+        <div class="dots-container">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
     </section>
 
-    <!-- PRODUTOS -->
-    <main class="container">
-
+    <main class="container" id="catalogo">
         <h2 class="section-title">Coleção Exclusiva</h2>
-
         <div class="product-grid">
-
-            <!-- CARD 1 -->
             <div class="card">
-                <img
-                    src="https://leloynparfums.com.br/cdn/shop/files/dd1d1c0b7eb1de1168a15fedf935517e.jpg?v=1769533438&width=1600"
-                    class="img-principal"
-                >
-
+                <img id="view1" src="https://leloynparfums.com.br/cdn/shop/files/dd1d1c0b7eb1de1168a15fedf935517e.jpg?v=1769533438&width=1600" class="img-principal" onclick="abrirZoom(this)">
+                <div class="mini-galeria">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/a8e26ac3947f1fce74ed6bfd0bf2f84f.jpg?v=1769533440&width=1600" onclick="trocar('view1', this.src)">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/75ml1_971d4097-f13d-49a7-af5f-b9ec87de4e60.png?v=1769533680&width=1600" onclick="trocar('view1', this.src)">
+                </div>
                 <div class="card-info">
                     <h3>IDOLE L'INTENSE EAU DE PARFUM</h3>
-
-                    <button class="btn-acao" onclick="zap('IDOLE L INTENSE')">
-                        Consultar
-                    </button>
+                    <button class="btn-acao" onclick="zap('IDOLE L\'INTENSE EAU DE PARFUM')">Consultar</button>
                 </div>
             </div>
 
-            <!-- CARD 2 -->
             <div class="card">
-                <img
-                    src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T112002.454.png?v=1769565701&width=832"
-                    class="img-principal"
-                >
-
+                <img id="view2" src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T112002.454.png?v=1769565701&width=832" class="img-principal" onclick="abrirZoom(this)">
+                <div class="mini-galeria">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T111811.132.png?v=1769565704&width=832" onclick="trocar('view2', this.src)">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T113411.774.png?v=1769565679&width=832" onclick="trocar('view2', this.src)">
+                </div>
                 <div class="card-info">
                     <h3>PRADA PARADOXE</h3>
-
-                    <button class="btn-acao" onclick="zap('Prada Paradoxe')">
-                        Consultar
-                    </button>
+                    <button class="btn-acao" onclick="zap('Prada paradoxe')">Consultar</button>
                 </div>
             </div>
 
-            <!-- CARD 3 -->
             <div class="card">
-                <img
-                    src="https://leloynparfums.com.br/cdn/shop/files/72198.png?v=1769559498&width=832"
-                    class="img-principal"
-                >
-
+                <img id="view3" src="https://leloynparfums.com.br/cdn/shop/files/72198.png?v=1769559498&width=832" class="img-principal" onclick="abrirZoom(this)">
+                <div class="mini-galeria">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/72198_1.png?v=1769559489&width=1600" onclick="trocar('view3', this.src)">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/72572.png?v=1769559495&width=1600" onclick="trocar('view3', this.src)">
+                </div>
                 <div class="card-info">
-                    <h3>TRÉSOR LA NUIT</h3>
-
-                    <button class="btn-acao" onclick="zap('Trésor La Nuit')">
-                        Consultar
-                    </button>
+                    <h3>Trésor La Nuit L'Eau de Parfum</h3>
+                    <button class="btn-acao" onclick="zap('Trésor La Nuit L\'Eau de Parfum')">Consultar</button>
                 </div>
             </div>
 
-            <!-- CARD 4 -->
             <div class="card">
-                <img
-                    src="https://leloynparfums.com.br/cdn/shop/files/72172.png?v=1769547207&width=832"
-                    class="img-principal"
-                >
-
+                <img id="view4" src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-08T143921.394.png?v=1769559922&width=3840" class="img-principal" onclick="abrirZoom(this)">
+                <div class="mini-galeria">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-08T143810.245.png?v=1769559937&width=1600" onclick="trocar('view4', this.src)">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-08T144039.092.png?v=1769559941&width=1600" onclick="trocar('view4', this.src)">
+                </div>
                 <div class="card-info">
-                    <h3>MY WAY GIORGIO ARMANI</h3>
-
-                    <button class="btn-acao" onclick="zap('My Way Giorgio Armani')">
-                        Consultar
-                    </button>
+                    <h3>La Vie Est Belle Lancôme</h3>
+                    <button class="btn-acao" onclick="zap('La Vie Est Belle')">Consultar</button>
                 </div>
             </div>
 
+            <div class="card">
+                <img id="view5" src="https://leloynparfums.com.br/cdn/shop/files/72172.png?v=1769547207&width=832" class="img-principal" onclick="abrirZoom(this)">
+                <div class="mini-galeria">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/72172_1.png?v=1769547231&width=1600" onclick="trocar('view5', this.src)">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/72606.png?v=1769547208&width=1600" onclick="trocar('view5', this.src)">
+                </div>
+                <div class="card-info">
+                    <h3>My Way Giorgio Armani</h3>
+                    <button class="btn-acao" onclick="zap('My Way Giorgio Armani')">Consultar</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img id="view6" src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN_dbb70dad-50f2-40fd-8d90-a7d6bebe94e1.png?v=1769530833&width=832" class="img-principal" onclick="abrirZoom(this)">
+                <div class="mini-galeria">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN_1_36ea0c92-64dc-458f-ac4c-1cca42d24c3c.png?v=1769530835&width=832" onclick="trocar('view6', this.src)">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN_6_69c116a1-faed-4fda-9708-966a3fe1bc34.png?v=1769530850&width=832" onclick="trocar('view6', this.src)">
+                </div>
+                <div class="card-info">
+                    <h3>Good Girl Carolina Herrera</h3>
+                    <button class="btn-acao" onclick="zap('Good Girl Carolina Herrera')">Consultar</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img id="view7" src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOS_LELOYN_-_2024-09-27T154457.486.png?v=1769518367&width=1600" class="img-principal" onclick="abrirZoom(this)">
+                <div class="mini-galeria">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOS_LELOYN_-_2024-09-27T154516.298.png?v=1769518370&width=1600" onclick="trocar('view7', this.src)">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOS_LELOYN_-_2024-09-27T154403.160.png?v=1769518373&width=1600" onclick="trocar('view7', this.src)">
+                </div>
+                <div class="card-info">
+                    <h3>Scandal Jean Paul Gaultier</h3>
+                    <button class="btn-acao" onclick="zap('Scandal Jean Paul Gaultier')">Consultar</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img id="view8" src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T142718.523.png?v=1769530650&width=1600" class="img-principal" onclick="abrirZoom(this)">
+                <div class="mini-galeria">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T142237.733.png?v=1769530641&width=832" onclick="trocar('view8', this.src)">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T142855.659.png?v=1769530655&width=832" onclick="trocar('view8', this.src)">
+                </div>
+                <div class="card-info">
+                    <h3>212 Vip Black C. Herrera</h3>
+                    <button class="btn-acao" onclick="zap('212 Vip Black')">Consultar</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img id="view9" src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T165845.948.png?v=1769517722&width=1600" class="img-principal" onclick="abrirZoom(this)">
+                <div class="mini-galeria">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T165932.357.png?v=1769517725&width=1600" onclick="trocar('view9', this.src)">
+                    <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T170504.010.png?v=1769517736&width=1600" onclick="trocar('view9', this.src)">
+                </div>
+                <div class="card-info">
+                    <h3>Silver Scent Intense Jacques Bogart</h3>
+                    <button class="btn-acao" onclick="zap('Silver Scent Intense')">Consultar</button>
+                </div>
+            </div>
         </div>
     </main>
 
-    <!-- MENU -->
+    <div id="modalZoom" class="modal-zoom" onclick="fecharZoom()">
+        <span class="fechar-zoom">&times;</span>
+        <img id="imgZoom" src="" alt="Zoom">
+    </div>
+
     <nav class="bottom-menu">
-
-        <a href="#inicio" class="menu-item">
-            <i class="fa-solid fa-house"></i>
-            <small>Início</small>
-        </a>
-
-        <a href="#" class="menu-item">
-            <i class="fa-solid fa-book-open"></i>
-            <small>Catálogo</small>
-        </a>
-
-        <a href="https://wa.me/5588996828800" class="menu-item">
-            <i class="fa-brands fa-whatsapp"></i>
-            <small>WhatsApp</small>
-        </a>
-
+        <a href="#inicio" class="menu-item"><i class="fa-solid fa-house"></i><small>Início</small></a>
+        <a href="#catalogo" class="menu-item"><i class="fa-solid fa-book-open"></i><small>Catálogo</small></a>
+        <a href="https://wa.me/5588996828800" class="menu-item"><i class="fa-brands fa-whatsapp"></i><small>WhatsApp</small></a>
     </nav>
 
     <script src="script.js"></script>
-
 </body>
 </html>
