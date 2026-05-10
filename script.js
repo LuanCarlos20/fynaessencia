@@ -1,7 +1,8 @@
 let currentIdx = 0;
 let totalImgs = 0;
 
-function abrirDetalhes(nome, desc, imgs) {
+// Agora a função aceita NOME, VOLUMETRIA, DESCRIÇÃO e IMAGENS
+function abrirDetalhes(nome, vol, desc, imgs) {
     const wrapper = document.getElementById('galleryWrapper');
     wrapper.innerHTML = ''; 
     totalImgs = imgs.length;
@@ -15,9 +16,11 @@ function abrirDetalhes(nome, desc, imgs) {
 
     wrapper.style.transform = `translateX(0)`;
     document.getElementById('mNome').innerText = nome;
+    document.getElementById('mVol').innerText = vol; // Coloca a volumetria certa
     document.getElementById('mDesc').innerText = desc;
+    
     document.getElementById('btnZap').onclick = () => {
-        const msg = encodeURIComponent(`Olá! Tenho interesse no perfume ${nome} (75ml).`);
+        const msg = encodeURIComponent(`Olá! Tenho interesse no perfume ${nome} de ${vol}. Está disponível?`);
         window.open(`https://wa.me/5588996828800?text=${msg}`);
     };
 
@@ -36,16 +39,20 @@ function fecharDetalhes() {
     document.body.style.overflow = 'auto';
 }
 
-// Auto Slider
+// Slider Automático do Topo
 let sPos = 0;
 setInterval(() => {
     sPos = (sPos + 1) % 3;
     const s = document.getElementById('slider');
     if(s) s.style.transform = `translateX(-${sPos * 33.33}%)`;
-}, 4500);
+}, 4000);
 
 function compartilhar() {
     if (navigator.share) {
-        navigator.share({ title: 'Fyna Essência', url: window.location.href });
+        navigator.share({ 
+            title: 'Fyna Essência', 
+            text: 'Confira nosso catálogo de perfumes de luxo!',
+            url: window.location.href 
+        });
     }
 }
