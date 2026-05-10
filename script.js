@@ -1,30 +1,27 @@
 let currentGalIndex = 0;
 let totalGalImages = 0;
 
-// Abrir Detalhes do Produto com Galeria
 function abrirDetalhes(nome, descricao, imagens) {
     const modal = document.getElementById('modalProduto');
     const wrapper = document.getElementById('galleryWrapper');
     
-    wrapper.innerHTML = ''; // Limpa imagens antigas
+    wrapper.innerHTML = '';
     currentGalIndex = 0;
     totalGalImages = imagens.length;
     
-    imagens.forEach(src => {
+    imagens.forEach(url => {
         const img = document.createElement('img');
-        img.src = src;
+        img.src = url;
         wrapper.appendChild(img);
     });
 
     wrapper.style.transform = `translateX(0)`;
     document.getElementById('modalNome').innerText = nome;
     document.getElementById('modalDesc').innerText = descricao;
-    
-    // Configura o botão do WhatsApp dinamicamente
     document.getElementById('btnZapModal').onclick = () => zap(nome);
 
     modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
 }
 
 function moveGal(dir) {
@@ -39,30 +36,23 @@ function fecharDetalhes() {
 }
 
 function zap(produto) {
-    const numero = "5588996828800";
-    const msg = encodeURIComponent(`Olá Fyna Essência! Tenho interesse no ${produto} (75ml 2.5 fl.oz). Está disponível?`);
-    window.open(`https://wa.me/${numero}?text=${msg}`, '_blank');
+    const msg = encodeURIComponent(`Olá Fyna Essência! Tenho interesse no ${produto} (75ml 2.5 fl.oz).`);
+    window.open(`https://wa.me/5588996828800?text=${msg}`, '_blank');
 }
 
-// Slider Automático do Topo
-let slideIdx = 0;
+// Slider principal automático
+let currentSlide = 0;
 setInterval(() => {
-    slideIdx = (slideIdx + 1) % 3;
-    const slider = document.getElementById('slider');
-    if(slider) slider.style.transform = `translateX(-${slideIdx * 33.33}%)`;
-}, 4500);
+    currentSlide = (currentSlide + 1) % 3;
+    const s = document.getElementById('slider');
+    if(s) s.style.transform = `translateX(-${currentSlide * 33.33}%)`;
+}, 4000);
 
-// Compartilhar Site
 function compartilhar() {
     if (navigator.share) {
         navigator.share({ title: 'Fyna Essência', url: window.location.href });
     } else {
+        alert("Link copiado!");
         navigator.clipboard.writeText(window.location.href);
-        alert("Link copiado para partilhar!");
     }
-}
-
-// Fechar modal ao clicar fora da caixa
-window.onclick = function(e) {
-    if (e.target == document.getElementById('modalProduto')) fecharDetalhes();
 }
