@@ -1,28 +1,33 @@
-let currentSlide = 0;
-const slider = document.getElementById('slider');
-const dots = document.querySelectorAll('.dot');
+let currentGalIndex = 0;
+let totalGalImages = 0;
 
-// Slider Automático
-setInterval(() => {
-    currentSlide = (currentSlide + 1) % 3;
-    if (slider) slider.style.transform = `translateX(-${currentSlide * 33.33}%)`;
-    dots.forEach((dot, index) => dot.classList.toggle('active', index === currentSlide));
-}, 4000);
-
-// Abrir Modal de Detalhes
-function abrirDetalhes(nome, descricao, imagem) {
+function abrirDetalhes(nome, descricao, imagens) {
     const modal = document.getElementById('modalProduto');
+    const wrapper = document.getElementById('galleryWrapper');
+    
+    wrapper.innerHTML = '';
+    currentGalIndex = 0;
+    totalGalImages = imagens.length;
+    
+    imagens.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        wrapper.appendChild(img);
+    });
+
+    wrapper.style.transform = `translateX(0)`;
     document.getElementById('modalNome').innerText = nome;
     document.getElementById('modalDesc').innerText = descricao;
-    document.getElementById('modalImg').src = imagem;
-    
-    // Configura o botão do WhatsApp
-    document.getElementById('btnZapModal').onclick = function() {
-        zap(nome);
-    };
+    document.getElementById('btnZapModal').onclick = () => zap(nome);
 
     modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
+}
+
+function moveGal(dir) {
+    const wrapper = document.getElementById('galleryWrapper');
+    currentGalIndex = (currentGalIndex + dir + totalGalImages) % totalGalImages;
+    wrapper.style.transform = `translateX(-${currentGalIndex * 100}%)`;
 }
 
 function fecharDetalhes() {
@@ -30,29 +35,24 @@ function fecharDetalhes() {
     document.body.style.overflow = 'auto';
 }
 
-// Fechar modal ao clicar fora
-window.onclick = function(event) {
-    const modal = document.getElementById('modalProduto');
-    if (event.target == modal) fecharDetalhes();
-}
-
-// WhatsApp
 function zap(produto) {
-    const numero = "5588996828800";
-    const mensagem = encodeURIComponent(`Olá Fyna Essência! Quero saber mais sobre o perfume: ${produto}.`);
-    window.open(`https://wa.me/${numero}?text=${mensagem}`, '_blank');
+    const msg = encodeURIComponent(`Olá Fyna Essência! Tenho interesse no ${produto} (75ml 2.5 fl.oz).`);
+    window.open(`https://wa.me/5588996828800?text=${msg}`, '_blank');
 }
 
-// Compartilhar
+// Slider principal
+let currentSlide = 0;
+setInterval(() => {
+    currentSlide = (currentSlide + 1) % 3;
+    const s = document.getElementById('slider');
+    if(s) s.style.transform = `translateX(-${currentSlide * 33.33}%)`;
+}, 4000);
+
 function compartilhar() {
     if (navigator.share) {
-        navigator.share({
-            title: 'Fyna Essência',
-            text: 'Confira este catálogo de perfumes incrível!',
-            url: window.location.href
-        });
+        navigator.share({ title: 'Fyna Essência', url: window.location.href });
     } else {
-        alert('Link copiado!');
+        alert("Link copiado para compartilhar!");
         navigator.clipboard.writeText(window.location.href);
     }
 }
