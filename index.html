@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fyna Essência | Catálogo Profissional</title>
+    <title>Fyna Essência | Catálogo Luxo</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -12,92 +12,58 @@
 
     <header id="inicio">
         <div class="brand-header">
-            <img src="./Fyna2.PNG" alt="Logo Fyna Essência" class="main-logo">
+            <img src="./Fyna2.PNG" alt="Logo" class="main-logo">
             <div class="logo-text">FYNA <span>ESSÊNCIA</span></div>
         </div>
-        <button class="share-btn" onclick="compartilhar()" title="Compartilhar Catálogo">
-            <i class="fa-solid fa-share-nodes"></i>
-        </button>
+        <button class="share-btn" onclick="compartilhar()"><i class="fa-solid fa-share-nodes"></i></button>
     </header>
 
     <section class="slider-box">
         <div class="slider-wrapper" id="slider">
-            <div class="slide"><img src="./preto.png" alt="Banner 1"></div>
-            <div class="slide"><img src="./slibranco.png" alt="Banner 2"></div>
-            <div class="slide"><img src="./gold.png" alt="Banner 3"></div>
-        </div>
-        <div class="dots-container">
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+            <div class="slide"><img src="./preto.png"></div>
+            <div class="slide"><img src="./slibranco.png"></div>
+            <div class="slide"><img src="./gold.png"></div>
         </div>
     </section>
 
     <main class="container" id="catalogo">
-        <h2 class="section-title">Coleção Exclusiva</h2>
+        <h2 class="section-title">Fragrâncias Exclusivas</h2>
         <div class="product-grid">
             
-            <div class="card" onclick="abrirDetalhes('IDOLE L\'INTENSE', 'Uma fragrância chipre floral feminina. Notas de Rosa de Grasse e Jasmim, com um fundo de baunilha e patchouli. Ideal para mulheres fortes e otimistas.', 'https://leloynparfums.com.br/cdn/shop/files/dd1d1c0b7eb1de1168a15fedf935517e.jpg?v=1769533438&width=1600')">
+            <div class="card" onclick="abrirDetalhes('IDOLE L\'INTENSE', 'Uma fragrância chipre floral feminina. Notas de Rosa de Grasse e Jasmim, com um fundo de baunilha e patchouli.', ['https://leloynparfums.com.br/cdn/shop/files/dd1d1c0b7eb1de1168a15fedf935517e.jpg?v=1769533438&width=1600', 'https://leloynparfums.com.br/cdn/shop/files/a8e26ac3947f1fce74ed6bfd0bf2f84f.jpg?v=1769533440&width=1600'])">
                 <img src="https://leloynparfums.com.br/cdn/shop/files/dd1d1c0b7eb1de1168a15fedf935517e.jpg?v=1769533438&width=1600" class="img-principal">
                 <div class="card-info">
                     <h3>IDOLE L'INTENSE</h3>
-                    <span class="view-more">Ver Detalhes</span>
+                    <p class="volumetria">75ml 2.5 fl.oz</p>
+                    <span class="view-more">Ver detalhes</span>
                 </div>
             </div>
 
-            <div class="card" onclick="abrirDetalhes('PRADA PARADOXE', 'A nova fragrância icónica da Prada. Uma explosão floral branca capturada num frasco triangular. Notas de Âmbar e Almíscar que exalam sofisticação.', 'https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T112002.454.png?v=1769565701&width=832')">
+            <div class="card" onclick="abrirDetalhes('PRADA PARADOXE', 'Explosão floral branca capturada em um frasco triangular icônico. Notas de Âmbar e Almíscar.', ['https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T112002.454.png?v=1769565701&width=832', 'https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T111811.132.png?v=1769565704&width=832'])">
                 <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T112002.454.png?v=1769565701&width=832" class="img-principal">
                 <div class="card-info">
                     <h3>PRADA PARADOXE</h3>
-                    <span class="view-more">Ver Detalhes</span>
+                    <p class="volumetria">75ml 2.5 fl.oz</p>
+                    <span class="view-more">Ver detalhes</span>
                 </div>
             </div>
 
-            <div class="card" onclick="abrirDetalhes('TRÉSOR LA NUIT', 'Um perfume oriental baunilha. É uma poção de amor moderna para mulheres que acreditam em contos de fadas. Notas de incenso, papiro e lichia.', 'https://leloynparfums.com.br/cdn/shop/files/72198.png?v=1769559498&width=832')">
-                <img src="https://leloynparfums.com.br/cdn/shop/files/72198.png?v=1769559498&width=832" class="img-principal">
-                <div class="card-info">
-                    <h3>TRÉSOR LA NUIT</h3>
-                    <span class="view-more">Ver Detalhes</span>
-                </div>
-            </div>
-
-            <div class="card" onclick="abrirDetalhes('LA VIE EST BELLE', 'O perfume da felicidade. Composta com as mais preciosas matérias-primas, como íris, jasmim e flor de laranjeira.', 'https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-08T143921.394.png?v=1769559922&width=3840')">
-                <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-08T143921.394.png?v=1769559922&width=3840" class="img-principal">
-                <div class="card-info">
-                    <h3>LA VIE EST BELLE</h3>
-                    <span class="view-more">Ver Detalhes</span>
-                </div>
-            </div>
-
-            <div class="card" onclick="abrirDetalhes('MY WAY', 'Um convite para alargar os seus horizontes. Notas de bergamota e flor de laranjeira do Egito, com um rasto de cedro da Virgínia.', 'https://leloynparfums.com.br/cdn/shop/files/72172.png?v=1769547207&width=832')">
-                <img src="https://leloynparfums.com.br/cdn/shop/files/72172.png?v=1769547207&width=832" class="img-principal">
-                <div class="card-info">
-                    <h3>MY WAY</h3>
-                    <span class="view-more">Ver Detalhes</span>
-                </div>
-            </div>
-
-            <div class="card" onclick="abrirDetalhes('GOOD GIRL', 'Ousada e sofisticada. A dualidade da mulher moderna representada pelo jasmim (feminilidade) e o cacau (mistério).', 'https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN_dbb70dad-50f2-40fd-8d90-a7d6bebe94e1.png?v=1769530833&width=832')">
-                <img src="https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN_dbb70dad-50f2-40fd-8d90-a7d6bebe94e1.png?v=1769530833&width=832" class="img-principal">
-                <div class="card-info">
-                    <h3>GOOD GIRL</h3>
-                    <span class="view-more">Ver Detalhes</span>
-                </div>
-            </div>
-            
             </div>
     </main>
 
     <div id="modalProduto" class="modal-produto">
         <div class="modal-content">
             <span class="close-modal" onclick="fecharDetalhes()">&times;</span>
-            <div class="modal-img-container">
-                <img id="modalImg" src="" alt="Produto">
+            <div class="modal-gallery">
+                <div class="gallery-wrapper" id="galleryWrapper"></div>
+                <button class="nav-gal btn-prev" onclick="moveGal(-1)">&#10094;</button>
+                <button class="nav-gal btn-next" onclick="moveGal(1)">&#10095;</button>
             </div>
             <div class="modal-body">
                 <h2 id="modalNome"></h2>
+                <p class="modal-vol">75ml 2.5 fl.oz</p>
                 <p id="modalDesc"></p>
-                <button id="btnZapModal" class="btn-acao-modal">Solicitar no WhatsApp</button>
+                <button id="btnZapModal" class="btn-acao-modal">Solicitar via WhatsApp</button>
             </div>
         </div>
     </div>
