@@ -1,49 +1,60 @@
-// Banco de dados das fotos extras para as setas
-const galeriaImagens = {
-    'view1': [
-        "https://leloynparfums.com.br/cdn/shop/files/dd1d1c0b7eb1de1168a15fedf935517e.jpg?v=1769533438&width=1600",
-        "https://leloynparfums.com.br/cdn/shop/files/a8e26ac3947f1fce74ed6bfd0bf2f84f.jpg?v=1769533440&width=1600"
-    ],
-    'view2': [
-        "https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T112002.454.png?v=1769565701&width=832",
-        "https://leloynparfums.com.br/cdn/shop/files/PRODUTOSLELOYN-2024-08-12T111811.132.png?v=1769565704&width=832"
-    ]
-};
-
-function moverGaleria(id, direcao) {
-    const imgElemento = document.getElementById(id);
-    const lista = galeriaImagens[id];
-    if (!lista) return;
-
-    let index = lista.indexOf(imgElemento.src);
-    index = (index + direcao + lista.length) % lista.length;
-    imgElemento.src = lista[index];
-}
-
-// Slider Banner
 let currentSlide = 0;
+const totalSlides = 3;
+const slider = document.getElementById('slider');
+const dots = document.querySelectorAll('.dot');
+
+// Slider Automático
 setInterval(() => {
-    const slider = document.getElementById('slider');
-    const dots = document.querySelectorAll('.dot');
-    currentSlide = (currentSlide + 1) % 3;
+    currentSlide++;
+    if (currentSlide >= totalSlides) currentSlide = 0;
     if (slider) slider.style.transform = `translateX(-${currentSlide * 33.33}%)`;
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+    dots.forEach((dot, index) => dot.classList.toggle('active', index === currentSlide));
 }, 4000);
 
-// Zoom
-function abrirZoom(el) {
-    const m = document.getElementById('modalZoom');
-    document.getElementById('imgZoom').src = el.src;
-    m.classList.add('active');
+// Troca de Fotos Galeria
+function trocar(id, url) {
+    const principal = document.getElementById(id);
+    if (principal) principal.src = url;
 }
-function fecharZoom() { document.getElementById('modalZoom').classList.remove('active'); }
+
+// Funções de Zoom
+function abrirZoom(elementoImg) {
+    const modal = document.getElementById('modalZoom');
+    const imgZoom = document.getElementById('imgZoom');
+    if (modal && imgZoom) {
+        imgZoom.src = elementoImg.src;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function fecharZoom() {
+    const modal = document.getElementById('modalZoom');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+}
 
 // WhatsApp
-function zap(prod) {
-    window.open(`https://wa.me/5588996828800?text=Olá! Tenho interesse no perfume ${prod}.`);
+function zap(produto) {
+    const numero = "5588996828800";
+    const mensagem = encodeURIComponent(`Olá Fyna Essência! Gostaria de saber mais sobre o ${produto}.`);
+    window.open(`https://wa.me/${numero}?text=${mensagem}`, '_blank');
 }
 
-// Compartilhar
+// Função de Compartilhar
 function compartilhar() {
-    if (navigator.share) navigator.share({ title: 'Fyna Essência', url: window.location.href });
+    if (navigator.share) {
+        navigator.share({
+            title: 'Fyna Essência | Catálogo',
+            text: 'Confira as fragrâncias exclusivas da Fyna Essência!',
+            url: window.location.href
+        })
+        .catch((error) => console.log('Erro ao compartilhar', error));
+    } else {
+        alert('Copiado para a área de transferência!');
+        navigator.clipboard.writeText(window.location.href);
+    }
 }
+    
