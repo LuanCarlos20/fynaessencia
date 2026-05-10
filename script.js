@@ -36,11 +36,11 @@ function fecharDetalhes() {
 }
 
 function zap(produto) {
-    const msg = encodeURIComponent(`Olá Fyna Essência! Tenho interesse no ${produto} (75ml 2.5 fl.oz).`);
+    const msg = encodeURIComponent(`Olá Fyna Essência! Tenho interesse no ${produto} (75ml 2.5 fl.oz). Está disponível?`);
     window.open(`https://wa.me/5588996828800?text=${msg}`, '_blank');
 }
 
-// Slider principal automático
+// Slider principal
 let currentSlide = 0;
 setInterval(() => {
     currentSlide = (currentSlide + 1) % 3;
@@ -51,8 +51,5 @@ setInterval(() => {
 function compartilhar() {
     if (navigator.share) {
         navigator.share({ title: 'Fyna Essência', url: window.location.href });
-    } else {
-        alert("Link copiado!");
-        navigator.clipboard.writeText(window.location.href);
     }
 }
