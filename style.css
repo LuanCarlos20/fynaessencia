@@ -1,7 +1,9 @@
 :root {
     --gold: #C5A059;
-    --dark-bg: #131224;
+    --black: #111111;
     --white: #ffffff;
+    --grad-start: #131224;
+    --grad-end: #201320;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -9,63 +11,73 @@ html { scroll-behavior: smooth; }
 
 body { 
     font-family: 'Poppins', sans-serif; 
-    background: linear-gradient(135deg, #131224, #201320);
+    background: linear-gradient(135deg, var(--grad-start), var(--grad-end));
     background-attachment: fixed;
     color: var(--white); 
     padding-bottom: 90px; 
 }
 
+/* Cabeçalho e Rodapé com a mesma cor */
+header, .bottom-menu { 
+    background: linear-gradient(135deg, var(--grad-start), var(--grad-end)) !important;
+    border-color: rgba(197, 160, 89, 0.3) !important;
+}
+
 header { 
-    background: rgba(19, 18, 36, 0.95);
     padding: 15px 20px; 
     display: flex; 
     justify-content: space-between; 
     align-items: center;
-    border-bottom: 1px solid rgba(197, 160, 89, 0.3);
-    position: sticky; top: 0; z-index: 1000;
+    border-bottom: 1px solid; 
 }
 
-.main-logo { height: 55px; width: 55px; border-radius: 50%; object-fit: contain; border: 1px solid var(--gold); background: #fff; }
-.logo-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: bold; }
+.brand-header { display: flex; align-items: center; gap: 12px; }
+.main-logo { height: 60px; width: 60px; border-radius: 50%; object-fit: contain; }
+.logo-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: bold; letter-spacing: 1px; color: var(--white); }
 .logo-text span { color: var(--gold); }
-.share-btn { background: none; border: none; color: var(--gold); font-size: 1.4rem; cursor: pointer; }
 
-/* Banner Slider */
-.slider-box { width: 100%; height: 220px; overflow: hidden; position: relative; }
+/* Botão de Compartilhar Gold */
+.share-btn { background: none; border: none; color: var(--gold); font-size: 1.4rem; cursor: pointer; padding: 8px; }
+
+/* Slider */
+.slider-box { width: 100%; height: 220px; overflow: hidden; position: relative; background: #000; }
 .slider-wrapper { display: flex; width: 300%; height: 100%; transition: 0.8s ease-in-out; }
 .slide { width: 33.333%; }
 .slide img { width: 100%; height: 100%; object-fit: cover; }
+.dots-container { position: absolute; bottom: 15px; width: 100%; display: flex; justify-content: center; gap: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); }
+.dot.active { background: var(--gold); width: 20px; border-radius: 10px; }
 
 /* Grid de Produtos */
-.section-title { text-align: center; margin: 30px 0; font-family: 'Playfair Display', serif; color: var(--gold); }
+.section-title { text-align: center; margin: 30px 0 20px; font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); }
 .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0 15px; }
 
 .card { 
     background: rgba(255, 255, 255, 0.05); 
     border-radius: 15px; 
-    border: 1px solid rgba(197, 160, 89, 0.2); 
     overflow: hidden; 
-    display: flex; flex-direction: column;
+    display: flex; 
+    flex-direction: column; 
+    border: 1px solid rgba(197, 160, 89, 0.2); 
+    backdrop-filter: blur(5px);
 }
 
-.img-container { position: relative; background: #fff; height: 180px; display: flex; align-items: center; justify-content: center; }
-.img-principal { max-width: 100%; max-height: 100%; object-fit: contain; padding: 10px; cursor: zoom-in; }
+.img-principal { width: 100%; height: 170px; object-fit: contain; padding: 12px; background: #fff; cursor: zoom-in; }
+.mini-galeria { display: flex; gap: 5px; padding: 8px; justify-content: center; background: rgba(255, 255, 255, 0.1); }
+.mini-galeria img { width: 35px; height: 35px; object-fit: cover; border-radius: 5px; border: 1px solid rgba(255,255,255,0.2); }
 
-.nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.1); color: var(--gold); border: none; font-size: 1.5rem; padding: 10px 5px; cursor: pointer; z-index: 5; }
-.left { left: 0; } .right { right: 0; }
-
-.card-info { padding: 12px; text-align: center; }
-.card-info h3 { font-size: 0.75rem; margin-bottom: 5px; color: var(--white); height: 35px; overflow: hidden; }
-.vol { color: var(--gold); font-size: 0.7rem; font-weight: bold; margin-bottom: 10px; }
-.btn-acao { width: 100%; padding: 10px; background: var(--gold); color: #fff; border: none; border-radius: 8px; font-weight: bold; text-transform: uppercase; font-size: 0.7rem; }
-
-/* Menu Inferior */
-.bottom-menu { position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; padding: 12px 0; background: #131224; border-top: 1px solid rgba(197, 160, 89, 0.3); z-index: 1000; }
-.menu-item { text-decoration: none; color: var(--gold); text-align: center; }
-.menu-item small { display: block; color: #fff; font-size: 0.6rem; text-transform: uppercase; }
+.card-info { padding: 12px; text-align: center; flex-grow: 1; }
+.card-info h3 { font-size: 0.72rem; font-weight: 600; margin-bottom: 12px; height: 40px; overflow: hidden; color: var(--white); text-transform: uppercase; }
+.btn-acao { width: 100%; padding: 10px 5px; background: var(--gold); color: #fff; border: none; border-radius: 8px; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; }
 
 /* Modal Zoom */
-.modal-zoom { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; }
+.modal-zoom { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
 .modal-zoom.active { display: flex; }
-.modal-zoom img { max-width: 90%; max-height: 80%; }
+.modal-zoom img { max-width: 90%; max-height: 80%; border-radius: 10px; }
 .fechar-zoom { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; }
+
+/* Menu Inferior Gold */
+.bottom-menu { position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid; z-index: 1000; }
+.menu-item { text-decoration: none; color: var(--gold); display: flex; flex-direction: column; align-items: center; width: 33%; }
+.menu-item i { font-size: 1.3rem; margin-bottom: 4px; }
+.menu-item small { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; color: var(--white); }
