@@ -17,7 +17,7 @@ body {
     padding-bottom: 90px; 
 }
 
-/* Cabeçalho e Rodapé com a mesma cor */
+/* Header e Menu unificados */
 header, .bottom-menu { 
     background: linear-gradient(135deg, var(--grad-start), var(--grad-end)) !important;
     border-color: rgba(197, 160, 89, 0.3) !important;
@@ -28,56 +28,72 @@ header {
     display: flex; 
     justify-content: space-between; 
     align-items: center;
-    border-bottom: 1px solid; 
+    border-bottom: 1px solid;
+    position: sticky; top: 0; z-index: 100;
 }
 
-.brand-header { display: flex; align-items: center; gap: 12px; }
-.main-logo { height: 60px; width: 60px; border-radius: 50%; object-fit: contain; }
-.logo-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: bold; letter-spacing: 1px; color: var(--white); }
+.main-logo { height: 50px; width: 50px; border-radius: 50%; border: 1px solid var(--gold); }
+.logo-text { color: var(--white); font-family: 'Playfair Display', serif; font-size: 1.1rem; }
 .logo-text span { color: var(--gold); }
 
-/* Botão de Compartilhar Gold */
-.share-btn { background: none; border: none; color: var(--gold); font-size: 1.4rem; cursor: pointer; padding: 8px; }
+.share-btn { background: none; border: none; color: var(--gold); font-size: 1.3rem; cursor: pointer; }
 
 /* Slider */
-.slider-box { width: 100%; height: 220px; overflow: hidden; position: relative; background: #000; }
+.slider-box { width: 100%; height: 200px; overflow: hidden; position: relative; }
 .slider-wrapper { display: flex; width: 300%; height: 100%; transition: 0.8s ease-in-out; }
 .slide { width: 33.333%; }
 .slide img { width: 100%; height: 100%; object-fit: cover; }
-.dots-container { position: absolute; bottom: 15px; width: 100%; display: flex; justify-content: center; gap: 8px; }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); }
-.dot.active { background: var(--gold); width: 20px; border-radius: 10px; }
 
 /* Grid de Produtos */
-.section-title { text-align: center; margin: 30px 0 20px; font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--white); }
+.section-title { text-align: center; margin: 30px 0; font-family: 'Playfair Display', serif; color: var(--white); }
 .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 0 15px; }
 
 .card { 
     background: rgba(255, 255, 255, 0.05); 
     border-radius: 15px; 
-    overflow: hidden; 
-    display: flex; 
-    flex-direction: column; 
     border: 1px solid rgba(197, 160, 89, 0.2); 
-    backdrop-filter: blur(5px);
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
 }
 
-.img-principal { width: 100%; height: 170px; object-fit: contain; padding: 12px; background: #fff; cursor: zoom-in; }
-.mini-galeria { display: flex; gap: 5px; padding: 8px; justify-content: center; background: rgba(255, 255, 255, 0.1); }
-.mini-galeria img { width: 35px; height: 35px; object-fit: cover; border-radius: 5px; border: 1px solid rgba(255,255,255,0.2); }
+.img-principal { width: 100%; height: 150px; object-fit: contain; padding: 10px; background: white; }
+.card-info { padding: 12px; }
+.card-info h3 { font-size: 0.75rem; margin-bottom: 5px; color: var(--white); text-transform: uppercase; }
+.view-more { color: var(--gold); font-size: 0.6rem; font-weight: bold; text-transform: uppercase; }
 
-.card-info { padding: 12px; text-align: center; flex-grow: 1; }
-.card-info h3 { font-size: 0.72rem; font-weight: 600; margin-bottom: 12px; height: 40px; overflow: hidden; color: var(--white); text-transform: uppercase; }
-.btn-acao { width: 100%; padding: 10px 5px; background: var(--gold); color: #fff; border: none; border-radius: 8px; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; }
+/* Modal de Detalhes Profissional */
+.modal-produto {
+    display: none; position: fixed; z-index: 2000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); backdrop-filter: blur(8px);
+    align-items: center; justify-content: center; padding: 20px;
+}
 
-/* Modal Zoom */
-.modal-zoom { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
-.modal-zoom.active { display: flex; }
-.modal-zoom img { max-width: 90%; max-height: 80%; border-radius: 10px; }
-.fechar-zoom { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; }
+.modal-content {
+    background: var(--grad-start);
+    width: 100%; max-width: 400px;
+    border-radius: 20px; border: 1px solid var(--gold);
+    overflow: hidden; position: relative;
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.close-modal { position: absolute; top: 15px; right: 20px; font-size: 30px; color: var(--gold); z-index: 10; cursor: pointer; }
+.modal-img-container { background: white; padding: 20px; }
+#modalImg { width: 100%; height: 200px; object-fit: contain; }
+.modal-body { padding: 25px; text-align: center; }
+#modalNome { font-family: 'Playfair Display', serif; color: var(--gold); margin-bottom: 15px; }
+#modalDesc { font-size: 0.85rem; line-height: 1.5; color: #ccc; margin-bottom: 20px; }
+
+.btn-acao-modal {
+    width: 100%; padding: 15px; background: var(--gold); color: white;
+    border: none; border-radius: 30px; font-weight: bold; text-transform: uppercase;
+}
 
 /* Menu Inferior Gold */
 .bottom-menu { position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-around; padding: 12px 0; border-top: 1px solid; z-index: 1000; }
-.menu-item { text-decoration: none; color: var(--gold); display: flex; flex-direction: column; align-items: center; width: 33%; }
-.menu-item i { font-size: 1.3rem; margin-bottom: 4px; }
-.menu-item small { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; color: var(--white); }
+.menu-item { text-decoration: none; color: var(--gold); display: flex; flex-direction: column; align-items: center; }
+.menu-item i { font-size: 1.3rem; margin-bottom: 3px; }
+.menu-item small { font-size: 0.65rem; color: var(--white); text-transform: uppercase; }
